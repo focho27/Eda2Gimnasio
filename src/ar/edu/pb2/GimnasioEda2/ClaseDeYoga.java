@@ -7,7 +7,10 @@ public class ClaseDeYoga extends Clase {
 	private Integer codigo;
 
 	public ClaseDeYoga(Integer codigo, Double precio, String nombre) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9d9f7920119c5ff8736be9f0baa14a6712c3ee88
 		this.precio = precio;
 		this.nombre = nombre;
 		this.codigo = codigo;
