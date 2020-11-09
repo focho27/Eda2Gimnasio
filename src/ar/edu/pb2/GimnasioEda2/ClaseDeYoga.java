@@ -10,7 +10,11 @@ public class ClaseDeYoga extends Clase {
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
 >>>>>>> ale
+=======
+>>>>>>> 9d9f7920119c5ff8736be9f0baa14a6712c3ee88
+>>>>>>> tam
 		this.precio = precio;
 		this.nombre = nombre;
 		this.codigo = codigo;
