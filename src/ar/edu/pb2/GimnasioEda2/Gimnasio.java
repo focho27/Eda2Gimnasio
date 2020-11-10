@@ -21,7 +21,6 @@ public class Gimnasio {
 		this.clases = new HashSet<>();
 		this.alumnos = new HashSet<>();
 		this.empleados = new HashSet<>();
-		this.clasesAPagar = new ArrayList<>();
 		this.saldo = 0.0;
 		this.clasesAPagar = new ArrayList<>();
 		this.codigoFactura = 0;
@@ -278,6 +277,14 @@ public class Gimnasio {
 
 	public Double gananciaActual() {
 		return	this.saldo = this.saldo - (this.gastosVariosTotales + calcularSueldos());
+	}
+	public ArrayList<Clase> getClasesAPagar() {
+		// TODO Auto-generated method stub
+		return clasesAPagar;
+	}
+	public HashSet<Clase> getClases() {
+		// TODO Auto-generated method stub
+		return clases;
 	}
 
 }
