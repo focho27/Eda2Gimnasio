@@ -1,6 +1,7 @@
 package ar.edu.pb2.GimnasioEda2;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 
 public class Gimnasio {
@@ -204,41 +205,50 @@ public class Gimnasio {
 		return null;
 	}
 	
-	public Boolean agregarCliente(Cliente alumno) {
-		return alumnos.add(alumno);
-}
-
-public Cliente buscarCliente(Integer dni) {
-		for (Cliente cliente : alumnos) {
-			if(cliente.getDni().equals(dni)) {
-				return cliente;
-			}
-		}
-		return null;
-}
-
-
-public Boolean agregarEmpleado(Empleado empleado) {
-	return empleados.add(empleado);
-}
-
-public Empleado buscarEmpleado(Integer codigoEmpleado) {
-	for (Empleado empleado : empleados) {
-		if(empleado instanceof Instructor) {
-			
-			if(((Instructor)empleado).getCodigo().equals(codigoEmpleado)) {
-				
-				return ((Instructor)empleado);
-			}
-		}
-		if(empleado instanceof Recepcionista) {
-			if(((Recepcionista)empleado).getCodigo().equals(codigoEmpleado)) {
-				return ((Recepcionista)empleado);
-			}
-		}
-		
+	public void agregarSaldo(Double dinero) {
+		saldo += dinero;
 	}
-	return null;
-}
-
+	
+	public Date diaActual() {
+	return	diaActual.getTime();
+	}
+	public void aumentarDias(Integer dias) {
+		diaActual.add(Calendar.DAY_OF_MONTH, dias);
+	}
+	public void aumentarHoras(Integer horas) {
+		diaActual.add(Calendar.HOUR, horas);
+	}
+	public void colorcarDiaEnAnio(Integer year , Integer month, Integer date, Integer hourOfDay,Integer minute) {
+	
+		diaActual.set(year, month, date, hourOfDay, minute);
+	}
+	
+	
+	public Boolean analizarVencimiento(Tarjeta tarjeta) {
+		if(tarjeta!=null) {
+			
+			if(tarjeta.getCalendario().before(tarjeta.getVencimiento())) {
+				return true;
+			}else {
+				bloquearIngreso(tarjeta);
+				return false;
+			}
+			
+		}
+		return false;
+	}
+	
+	public Double calcularSueldos(){
+		Double sueldos=0.0;
+		for (Empleado empleado : empleados) {
+			if(empleado instanceof Instructor) {
+				sueldos+=((Instructor)empleado).getSueldo();
+			}
+			if(empleado instanceof Recepcionista) {
+				sueldos+=((Recepcionista)empleado).getSueldo();
+				}
+			}
+		return sueldos;
+	}
+		
 }
