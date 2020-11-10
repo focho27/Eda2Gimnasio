@@ -1,15 +1,23 @@
 package ar.edu.pb2.GimnasioEda2;
+<<<<<<< HEAD
 
+=======
+>>>>>>> de02c3eef3bab51880fdd39d5bce1de059d494e5
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 
+<<<<<<< HEAD
 
 
 
 
 
 public class Gimnasio {
+=======
+public class Gimnasio {
+
+>>>>>>> de02c3eef3bab51880fdd39d5bce1de059d494e5
 	private String nombre;
 	private String direccion;
 	private HashSet<Clase> clases;
@@ -171,4 +179,82 @@ public class Gimnasio {
 		
 		return null;
 	}
+<<<<<<< HEAD
+=======
+	
+	
+	public Boolean agregarCliente(Cliente alumno) {
+		return alumnos.add(alumno);
+	}
+
+	public Cliente buscarCliente(Integer dni) {
+		for (Cliente cliente : alumnos) {
+			if (cliente.getDni().equals(dni)) {
+				return cliente;
+			}
+		}
+		return null;
+	}
+
+	public Boolean agregarEmpleado(Empleado empleado) {
+		return empleados.add(empleado);
+	}
+
+	public Empleado buscarEmpleado(Integer codigoEmpleado) {
+		for (Empleado empleado : empleados) {
+			if (empleado instanceof Instructor) {
+
+				if (((Instructor) empleado).getCodigo().equals(codigoEmpleado)) {
+
+					return ((Instructor) empleado);
+				}
+			}
+			if (empleado instanceof Recepcionista) {
+				if (((Recepcionista) empleado).getCodigo().equals(codigoEmpleado)) {
+					return ((Recepcionista) empleado);
+				}
+			}
+
+		}
+		return null;
+	}
+	
+	public Boolean agregarCliente(Cliente alumno) {
+		return alumnos.add(alumno);
+}
+
+public Cliente buscarCliente(Integer dni) {
+		for (Cliente cliente : alumnos) {
+			if(cliente.getDni().equals(dni)) {
+				return cliente;
+			}
+		}
+		return null;
+}
+
+
+public Boolean agregarEmpleado(Empleado empleado) {
+	return empleados.add(empleado);
+}
+
+public Empleado buscarEmpleado(Integer codigoEmpleado) {
+	for (Empleado empleado : empleados) {
+		if(empleado instanceof Instructor) {
+			
+			if(((Instructor)empleado).getCodigo().equals(codigoEmpleado)) {
+				
+				return ((Instructor)empleado);
+			}
+		}
+		if(empleado instanceof Recepcionista) {
+			if(((Recepcionista)empleado).getCodigo().equals(codigoEmpleado)) {
+				return ((Recepcionista)empleado);
+			}
+		}
+		
+	}
+	return null;
+}
+
+>>>>>>> de02c3eef3bab51880fdd39d5bce1de059d494e5
 }

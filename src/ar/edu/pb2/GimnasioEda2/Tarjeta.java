@@ -131,6 +131,57 @@ public class Tarjeta {
 			return false;
 		}
 		
+	public Integer cantidadDeClasesAnotades() {
+		cantidadDeClasesAnotadas=clasesHabilitadas.size();
+		return cantidadDeClasesAnotadas;
+	}
+	
+	public Boolean eliminarClase(Integer codigoClase) {
+		if(buscarClase(codigoClase)) {
+			for (Clase clase : clasesHabilitadas) {
+				if(clase!=null) {
+					if(clase instanceof ClaseDeBoxeo) {
+					if(((ClaseDeBoxeo)clase).getCodigo().equals(codigoClase)) {
+					return clasesHabilitadas.remove(clase);
+					}	
+					}
+				
+				else if(clase instanceof ClaseDeMusculacion) {
+					if(((ClaseDeMusculacion)clase).getCodigo().equals(codigoClase)) {
+						return clasesHabilitadas.remove(clase);
+					
+					}
+				}
+				else if(clase instanceof ClaseDeNatacion) {
+					if(((ClaseDeNatacion)clase).getCodigo().equals(codigoClase)) {
+						return clasesHabilitadas.remove(clase);
+						
+					}
+				}
+				else if(clase instanceof ClaseDeSpinning) {
+					if(((ClaseDeSpinning)clase).getCodigo().equals(codigoClase)) {
+						return clasesHabilitadas.remove(clase);
+						
+					}
+				}
+				else if(clase instanceof ClaseDeYoga) {
+					if(((ClaseDeYoga)clase).getCodigo().equals(codigoClase)) {
+						return clasesHabilitadas.remove(clase);
+					
+					}
+				}
+				else if(clase instanceof ClaseDeAerobico) {
+					if(((ClaseDeAerobico)clase).getCodigo().equals(codigoClase)) {
+						return clasesHabilitadas.remove(clase);
+						
+					}
+				}
+			}
+		}	
+	}
+		return false;
+	
+	}	
 	public ArrayList<Clase> getClasesHabilitadas() {
 		return clasesHabilitadas;
 	}
