@@ -335,4 +335,8 @@ public class Gimnasio {
 		return listadoDeGastos;
 	}
 
+	public Double getSaldo() {
+		return saldo;
+	}
+
 }
