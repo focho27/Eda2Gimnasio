@@ -203,7 +203,7 @@ public class Gimnasio {
 	public Boolean analizarVencimiento(Tarjeta tarjeta) {
 		if (tarjeta != null) {
 
-			if (tarjeta.getCalendario().before(tarjeta.getVencimiento())) {
+			if (diaActual.before(tarjeta.getVencimiento())) {
 				return true;
 			} else {
 				bloquearIngreso(tarjeta);
@@ -319,11 +319,12 @@ public class Gimnasio {
 		ArrayList<Clase> clasesARenovar = new ArrayList<>();
 		Calendar calendarioVencimientoNuevo = Calendar.getInstance();
 		if (tarjeta != null) {
+			calendarioVencimientoNuevo = tarjeta.getCalendario();
 			calendarioVencimientoNuevo.add(Calendar.DAY_OF_MONTH, 31);
 			clasesARenovar.addAll(tarjeta.getClasesHabilitadas());
 			enviarFactura(codigoRecepcionista, dni, clasesARenovar);
 			abonarFactura(dni, codigoRecepcionista, dinero);
-		
+			
 			tarjeta.setVencimiento(calendarioVencimientoNuevo);
 			return true;
 		}

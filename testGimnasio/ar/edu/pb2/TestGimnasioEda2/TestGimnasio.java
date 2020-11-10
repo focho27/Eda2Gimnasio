@@ -560,7 +560,7 @@ public class TestGimnasio {
 		gimnasio.habilitarClase(gimnasio.getClasesAPagar(), 41505304, 1);
 		
 		tarjeta2.sumarRestarDiasFechaVencimiento(40);
-	
+		gimnasio.aumentarDias(40);
 	
 		assertFalse(gimnasio.scannerIngreso(tarjeta2,20));
 		
@@ -599,7 +599,7 @@ public class TestGimnasio {
 		
 	
 		tarjeta2.sumarRestarDiasFechaVencimiento(31);
-		
+		gimnasio.aumentarDias(31);
 		gimnasio.renovarMesConClasesExistentes(tarjeta2, 1, 41505304, 1800.0);
 		assertTrue(gimnasio.scannerIngreso(tarjeta2,20));
 		
