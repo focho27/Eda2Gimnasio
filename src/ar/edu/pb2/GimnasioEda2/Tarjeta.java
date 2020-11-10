@@ -190,7 +190,6 @@ public class Tarjeta {
 	}
 	
 	
-	
 	public  Calendar getCalendario() {
 		return calendario;
 	}
@@ -228,6 +227,7 @@ public class Tarjeta {
 			return false;
 		return true;
 	}
+	
 	
 	
 	
