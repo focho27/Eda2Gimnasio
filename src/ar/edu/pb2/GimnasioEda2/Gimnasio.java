@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 
-
-
-
-
 public class Gimnasio {
 	private String nombre;
 	private String direccion;
@@ -42,6 +38,5 @@ public class Gimnasio {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	
-	
+		
 }

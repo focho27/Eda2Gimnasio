@@ -1,6 +1,5 @@
 package ar.edu.pb2.GimnasioEda2;
 
-
 public abstract class Empleado {
 	protected String nombreYApellido, direccion;
 	protected Integer dni, telefono;
