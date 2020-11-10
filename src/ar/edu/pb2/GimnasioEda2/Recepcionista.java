@@ -5,43 +5,63 @@ import java.util.HashSet;
 public class Recepcionista extends Empleado {
 	private Integer codigoRecepcionista;
 	private Double sueldo;
-	private HashSet <Factura> facturas;
-	public Recepcionista(Integer dni, String nombreYApellido, Integer telefono, String direccion,Tarjeta tarjeta,Integer codigoRecepcionista,Double Sueldo) {
-		super(dni, nombreYApellido, telefono, direccion,tarjeta);
-		this.codigoRecepcionista =codigoRecepcionista;
+	private HashSet<Factura> facturas;
+
+	public Recepcionista(Integer dni, String nombreYApellido, Integer telefono, String direccion, Tarjeta tarjeta,
+			Integer codigoRecepcionista, Double Sueldo) {
+		super(dni, nombreYApellido, telefono, direccion, tarjeta);
+		this.codigoRecepcionista = codigoRecepcionista;
 		this.sueldo = Sueldo;
 		this.facturas = new HashSet<>();
 	}
+
 	@Override
 	public Integer getCodigo() {
 		return this.codigoRecepcionista;
 	}
+
 	public void setCodigoRecepcionista(Integer codigoRecepcionista) {
 		this.codigoRecepcionista = codigoRecepcionista;
 	}
-	
+
 	public Boolean agregarFacturaARecepcion(Factura factura) {
 		return facturas.add(factura);
 	}
-	
+
 	public Double getSueldo() {
 		return this.sueldo;
 	}
+
 	public void setSueldo(Double sueldo) {
 		this.sueldo = sueldo;
 	}
-	
-	//buscar la factura del cliente en base al dni ver la clase factura y probar metodo con Test
+
+	// buscar la factura del cliente en base al dni
 	public Factura buscarFacturaConCliente(Integer dni) {
 		for (Factura factura : facturas) {
-			if(factura.getCliente().getDni().equals(dni)) {
+			if (factura.getCliente().getDni().equals(dni)) {
 				return factura;
 			}
 		}
 		return null;
 	}
-	
-	
+
+	// con la tarjeta en base a si ya pago las clases que se desbloquee la tarjeta
+	// para hacer las clases
+	public Boolean desbloquearTarjeta(Tarjeta tarjeta) {
+		tarjeta.setBloqueo(false);
+		return true;
+	}
+
+	public Boolean recibirActaMedica(Integer dni) {
+		for (Factura factura : facturas) {
+			if (factura.getCliente().getDni().equals(dni)) {
+				factura.getCliente().getTarjeta().setActaMedica(true);
+				return true;
+			}
+		}
+		return false;
+	}
 
 	@Override
 	public int hashCode() {
@@ -50,6 +70,7 @@ public class Recepcionista extends Empleado {
 		result = prime * result + ((codigoRecepcionista == null) ? 0 : codigoRecepcionista.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -66,5 +87,5 @@ public class Recepcionista extends Empleado {
 			return false;
 		return true;
 	}
-				
+
 }

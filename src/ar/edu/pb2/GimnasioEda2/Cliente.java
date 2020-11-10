@@ -11,7 +11,6 @@ public class Cliente {
 		this.nombreYApellido = nombreYApellido;
 		this.telefono = telefono;
 		this.direccion = direccion;
-
 	}
 
 	public String getNombreYApellido() {
@@ -31,7 +30,7 @@ public class Cliente {
 	}
 
 	public Integer getDni() {
-		
+
 		return dni;
 	}
 
@@ -48,12 +47,11 @@ public class Cliente {
 	}
 
 	public Boolean recibirTarjetaDelGimnasio(Tarjeta tarjeta) {
-	// pauta que tarjeta lleva dni del cliente
+		// pauta que tarjeta lleva dni del cliente
 		if (tarjeta != null && tarjeta.getDni().equals(this.dni)) {
 			this.tarjeta = tarjeta;
-		//Terminar metodo si falta algo	
+			// Terminar metodo si falta algo
 			return true;
-			
 		}
 		return false;
 	}

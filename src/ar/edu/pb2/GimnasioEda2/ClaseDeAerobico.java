@@ -1,6 +1,7 @@
 package ar.edu.pb2.GimnasioEda2;
 
 import java.util.ArrayList;
+
 public class ClaseDeAerobico extends Clase {
 	private Integer codigo;
 
@@ -72,6 +73,5 @@ public class ClaseDeAerobico extends Clase {
 			return false;
 		return true;
 	}
-
 
 }

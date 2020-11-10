@@ -1,28 +1,32 @@
 package ar.edu.pb2.GimnasioEda2;
+
 import java.util.ArrayList;
 
 public class ClaseDeNatacion extends Clase {
-		
-		private Integer codigo;
-		
-		public ClaseDeNatacion(Integer codigo,Double precio,String nombre) {
-			
-			this.precio = precio;
-			this.nombre = nombre;
-			this.codigo = codigo;
-			this.alumnos = new ArrayList<>();
-			this.profesores = new ArrayList<>();
-		}
-	@Override 
+
+	private Integer codigo;
+
+	public ClaseDeNatacion(Integer codigo, Double precio, String nombre) {
+
+		this.precio = precio;
+		this.nombre = nombre;
+		this.codigo = codigo;
+		this.alumnos = new ArrayList<>();
+		this.profesores = new ArrayList<>();
+	}
+
+	@Override
 	public Double precioClase() {
-			return this.precio;
+		return this.precio;
 	}
-	@Override 
+
+	@Override
 	public Boolean agregarAlumnoAClase(Cliente alumno) {
-	return	alumnos.add(alumno);
-		
+		return alumnos.add(alumno);
+
 	}
-	@Override 
+
+	@Override
 	public Boolean agregarProfesorAClase(Empleado profesor) {
 		return profesores.add(profesor);
 	}
@@ -30,18 +34,23 @@ public class ClaseDeNatacion extends Clase {
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public Integer getCodigo() {
 		return codigo;
 	}
+
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -49,6 +58,7 @@ public class ClaseDeNatacion extends Clase {
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -65,6 +75,5 @@ public class ClaseDeNatacion extends Clase {
 			return false;
 		return true;
 	}
-	
-	
+
 }
