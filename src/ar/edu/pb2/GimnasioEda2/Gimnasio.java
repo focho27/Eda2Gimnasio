@@ -319,10 +319,11 @@ public class Gimnasio {
 		ArrayList<Clase> clasesARenovar = new ArrayList<>();
 		Calendar calendarioVencimientoNuevo = Calendar.getInstance();
 		if (tarjeta != null) {
+			calendarioVencimientoNuevo.add(Calendar.DAY_OF_MONTH, 31);
 			clasesARenovar.addAll(tarjeta.getClasesHabilitadas());
 			enviarFactura(codigoRecepcionista, dni, clasesARenovar);
 			abonarFactura(dni, codigoRecepcionista, dinero);
-			calendarioVencimientoNuevo.add(Calendar.DAY_OF_MONTH, 31);
+		
 			tarjeta.setVencimiento(calendarioVencimientoNuevo);
 			return true;
 		}
