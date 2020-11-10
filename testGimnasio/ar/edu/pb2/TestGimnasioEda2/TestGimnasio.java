@@ -2,6 +2,7 @@ package ar.edu.pb2.TestGimnasioEda2;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -381,6 +382,227 @@ public class TestGimnasio {
 		gimnasio.enviarFactura(1, 41505304, gimnasio.getClasesAPagar());
 		gimnasio.abonarFactura(41505304, 1, 1800.0);
 		assertTrue(gimnasio.recibirActaMedica(41505304, 1));
+	}
+	@Test
+	public void queSePuedaIngresarAUnaClaseQueEsteInscripte() {
+		Date fecha_Inicio = new Date();
+		Tarjeta tarjeta = new Tarjeta (1,41506304,fecha_Inicio);
+		Tarjeta tarjeta2 = new Tarjeta (2,41505304,fecha_Inicio);
+		Gimnasio gimnasio = new Gimnasio("Lo de Pepe","Peribebuy 6000");
+		Empleado empleado = new Recepcionista(41506304,"CarlitosPeña",1169785493,"Rivadavia 9894,",tarjeta,1,60000.0);
+		Cliente cliente = new Cliente(41505304,"Diegote",1169584736,"Juan B. Justo 4141");
+		Clase claseBoxeo = new ClaseDeBoxeo(10,1000.0,"Boxeo");
+		Clase claseAerobico = new ClaseDeAerobico(20,1000.0,"Aerobico");
+		Clase claseSpinning = new ClaseDeYoga(30,500.0,"Spinning");
+		gimnasio.agregarClase(claseBoxeo);
+		gimnasio.agregarClase(claseAerobico);
+		gimnasio.agregarClase(claseSpinning);
+		
+		gimnasio.agregarEmpleado(empleado);
+		
+		gimnasio.agregarCliente(cliente);
+		
+		gimnasio.emitirTarjetaCliente(tarjeta2, 41505304);
+		
+		
+		gimnasio.agregarClasesAPagar(10);
+		gimnasio.agregarClasesAPagar(20);
+		
+		gimnasio.enviarFactura(1, 41505304, gimnasio.getClasesAPagar());
+		
+		gimnasio.abonarFactura(41505304, 1, 1800.0);
+		
+		gimnasio.recibirActaMedica(41505304, 1);
+		
+		gimnasio.habilitarClase(gimnasio.getClasesAPagar(), 41505304, 1);
+		
+		assertTrue(gimnasio.scannerIngreso(tarjeta2,10));
+		assertTrue(gimnasio.scannerIngreso(tarjeta2,20));
+		
+	}
+	@Test 
+	public void queNoSePuedaIngresarBloqueadoSinDesbloquear() {
+		Date fecha_Inicio = new Date();
+		Tarjeta tarjeta = new Tarjeta (1,41506304,fecha_Inicio);
+		Tarjeta tarjeta2 = new Tarjeta (2,41505304,fecha_Inicio);
+		Gimnasio gimnasio = new Gimnasio("Lo de Pepe","Peribebuy 6000");
+		Empleado empleado = new Recepcionista(41506304,"CarlitosPeña",1169785493,"Rivadavia 9894,",tarjeta,1,60000.0);
+		Cliente cliente = new Cliente(41505304,"Diegote",1169584736,"Juan B. Justo 4141");
+		Clase claseBoxeo = new ClaseDeBoxeo(10,1000.0,"Boxeo");
+		Clase claseAerobico = new ClaseDeAerobico(20,1000.0,"Aerobico");
+		Clase claseSpinning = new ClaseDeYoga(30,500.0,"Spinning");
+		gimnasio.agregarClase(claseBoxeo);
+		gimnasio.agregarClase(claseAerobico);
+		gimnasio.agregarClase(claseSpinning);
+		
+		gimnasio.agregarEmpleado(empleado);
+		
+		gimnasio.agregarCliente(cliente);
+		
+		gimnasio.emitirTarjetaCliente(tarjeta2, 41505304);
+		
+	
+		gimnasio.agregarClasesAPagar(10);
+		gimnasio.agregarClasesAPagar(20);
+		
+		gimnasio.enviarFactura(1, 41505304, gimnasio.getClasesAPagar());
+		
+		gimnasio.abonarFactura(41505304, 1, 1800.0);
+		
+		gimnasio.recibirActaMedica(41505304, 1);
+		
+		gimnasio.habilitarClase(gimnasio.getClasesAPagar(), 41505304, 1);
+		gimnasio.scannerIngreso(tarjeta2,30);
+		assertFalse(gimnasio.scannerIngreso(tarjeta2,10));
+		assertFalse(gimnasio.scannerIngreso(tarjeta2,20));
+	}
+	
+	@Test
+	public void queSeDesbloqueeTarjetaYLoDejeEntrar() {
+		Date fecha_Inicio = new Date();
+		Tarjeta tarjeta = new Tarjeta (1,41506304,fecha_Inicio);
+		Tarjeta tarjeta2 = new Tarjeta (2,41505304,fecha_Inicio);
+		Gimnasio gimnasio = new Gimnasio("Lo de Pepe","Peribebuy 6000");
+		Empleado empleado = new Recepcionista(41506304,"CarlitosPeña",1169785493,"Rivadavia 9894,",tarjeta,1,60000.0);
+		Cliente cliente = new Cliente(41505304,"Diegote",1169584736,"Juan B. Justo 4141");
+		Clase claseBoxeo = new ClaseDeBoxeo(10,1000.0,"Boxeo");
+		Clase claseAerobico = new ClaseDeAerobico(20,1000.0,"Aerobico");
+		Clase claseSpinning = new ClaseDeYoga(30,500.0,"Spinning");
+		gimnasio.agregarClase(claseBoxeo);
+		gimnasio.agregarClase(claseAerobico);
+		gimnasio.agregarClase(claseSpinning);
+		
+		gimnasio.agregarEmpleado(empleado);
+		
+		gimnasio.agregarCliente(cliente);
+		
+		gimnasio.emitirTarjetaCliente(tarjeta2, 41505304);
+		
+		gimnasio.agregarClasesAPagar(10);
+		gimnasio.agregarClasesAPagar(20);
+		
+		gimnasio.enviarFactura(1, 41505304, gimnasio.getClasesAPagar());
+		
+		gimnasio.abonarFactura(41505304, 1, 1800.0);
+		
+		gimnasio.recibirActaMedica(41505304, 1);
+		
+		gimnasio.habilitarClase(gimnasio.getClasesAPagar(), 41505304, 1);
+		gimnasio.scannerIngreso(tarjeta2,30);
+		gimnasio.desbloquearTarjeta(1, 41505304);
+		assertTrue(gimnasio.scannerIngreso(tarjeta2,10));
+		assertTrue(gimnasio.scannerIngreso(tarjeta2,20));
+	}
+
+	@Test
+	public void queCalculeBienLaGananciaDelGimnasio() {
+		Date fecha_Inicio = new Date();
+		Tarjeta tarjeta = new Tarjeta (1,41506304,fecha_Inicio);
+		Tarjeta tarjeta2 = new Tarjeta (2,41505304,fecha_Inicio);
+		Gimnasio gimnasio = new Gimnasio("Lo de Pepe","Peribebuy 6000");
+		Empleado empleado = new Recepcionista(41506304,"CarlitosPeña",1169785493,"Rivadavia 9894,",tarjeta,1,60000.0);
+		Cliente cliente = new Cliente(41505304,"Diegote",1169584736,"Juan B. Justo 4141");
+		Clase claseBoxeo = new ClaseDeBoxeo(10,1000.0,"Boxeo");
+		Clase claseAerobico = new ClaseDeAerobico(20,1000.0,"Aerobico");
+		Clase claseSpinning = new ClaseDeYoga(30,500.0,"Spinning");
+		gimnasio.agregarClase(claseBoxeo);
+		gimnasio.agregarClase(claseAerobico);
+		gimnasio.agregarClase(claseSpinning);
+		
+		gimnasio.agregarEmpleado(empleado);
+		
+		gimnasio.agregarCliente(cliente);
+		
+		gimnasio.emitirTarjetaCliente(tarjeta2, 41505304);
+		
+	
+		gimnasio.agregarClasesAPagar(10);
+		gimnasio.agregarClasesAPagar(20);
+		
+		gimnasio.enviarFactura(1, 41505304, gimnasio.getClasesAPagar());
+		
+		gimnasio.abonarFactura(41505304, 1, 1800.0);
+		
+		
+		assertEquals(-58400.0,gimnasio.gananciaActual(),0.01);
+	}
+	
+	
+	 @Test
+	 public void queNoSePuedaUsarLaTarjetaVencida() {
+		
+		Date fecha_Inicio = new Date();
+		Tarjeta tarjeta = new Tarjeta (1,41506304,fecha_Inicio);
+		Tarjeta tarjeta2 = new Tarjeta (2,41505304,fecha_Inicio);
+		Gimnasio gimnasio = new Gimnasio("Lo de Pepe","Peribebuy 6000");
+		Empleado empleado = new Recepcionista(41506304,"CarlitosPeña",1169785493,"Rivadavia 9894,",tarjeta,1,60000.0);
+		Cliente cliente = new Cliente(41505304,"Diegote",1169584736,"Juan B. Justo 4141");
+		Clase claseBoxeo = new ClaseDeBoxeo(10,1000.0,"Boxeo");
+		Clase claseAerobico = new ClaseDeAerobico(20,1000.0,"Aerobico");
+		Clase claseSpinning = new ClaseDeYoga(30,500.0,"Spinning");
+		gimnasio.agregarClase(claseBoxeo);
+		gimnasio.agregarClase(claseAerobico);
+		gimnasio.agregarClase(claseSpinning);
+		
+		gimnasio.agregarEmpleado(empleado);
+		
+		gimnasio.agregarCliente(cliente);
+		
+		gimnasio.emitirTarjetaCliente(tarjeta2, 41505304);
+		
+	
+		gimnasio.agregarClasesAPagar(10);
+		gimnasio.agregarClasesAPagar(20);
+		
+		gimnasio.enviarFactura(1, 41505304, gimnasio.getClasesAPagar());
+		
+		gimnasio.abonarFactura(41505304, 1, 1800.0);
+		gimnasio.habilitarClase(gimnasio.getClasesAPagar(), 41505304, 1);
+		
+		tarjeta2.sumarRestarDiasFechaVencimiento(40);
+	
+	
+		assertFalse(gimnasio.scannerIngreso(tarjeta2,20));
+		
+	}
+	
+	@Test
+	public void queSeAboneySePuedaUsarLaTarjeta() {
+		
+		Date fecha_Inicio = new Date();
+		Tarjeta tarjeta = new Tarjeta (1,41506304,fecha_Inicio);
+		Tarjeta tarjeta2 = new Tarjeta (2,41505304,fecha_Inicio);
+		Gimnasio gimnasio = new Gimnasio("Lo de Pepe","Peribebuy 6000");
+		Empleado empleado = new Recepcionista(41506304,"CarlitosPeña",1169785493,"Rivadavia 9894,",tarjeta,1,60000.0);
+		Cliente cliente = new Cliente(41505304,"Diegote",1169584736,"Juan B. Justo 4141");
+		Clase claseBoxeo = new ClaseDeBoxeo(10,1000.0,"Boxeo");
+		Clase claseAerobico = new ClaseDeAerobico(20,1000.0,"Aerobico");
+		Clase claseSpinning = new ClaseDeYoga(30,500.0,"Spinning");
+		gimnasio.agregarClase(claseBoxeo);
+		gimnasio.agregarClase(claseAerobico);
+		gimnasio.agregarClase(claseSpinning);
+		
+		gimnasio.agregarEmpleado(empleado);
+		
+		gimnasio.agregarCliente(cliente);
+		
+		gimnasio.emitirTarjetaCliente(tarjeta2, 41505304);
+		
+	
+		gimnasio.agregarClasesAPagar(10);
+		gimnasio.agregarClasesAPagar(20);
+		
+		gimnasio.enviarFactura(1, 41505304, gimnasio.getClasesAPagar());
+		
+		gimnasio.abonarFactura(41505304, 1, 1800.0);
+		gimnasio.habilitarClase(gimnasio.getClasesAPagar(), 41505304, 1);
+		
+	
+		tarjeta2.sumarRestarDiasFechaVencimiento(31);
+		
+		gimnasio.renovarMesConClasesExistentes(tarjeta2, 1, 41505304, 1800.0);
+		assertTrue(gimnasio.scannerIngreso(tarjeta2,20));
+		
 	}
 
 }

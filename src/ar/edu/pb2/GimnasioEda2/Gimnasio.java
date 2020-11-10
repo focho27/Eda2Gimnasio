@@ -5,6 +5,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 
+
+
+
 public class Gimnasio {
 
 	private String nombre;
@@ -338,5 +341,85 @@ public class Gimnasio {
 	public Double getSaldo() {
 		return saldo;
 	}
+	
+	public Boolean recibirActaMedica(Integer dni, Integer codigoRecepcionista) {
+		if(buscarCliente(dni)!=null && buscarEmpleado(codigoRecepcionista)!=null) {
+		return ((Recepcionista)buscarEmpleado(codigoRecepcionista)).recibirActaMedica(dni);
+		}
+		return false;
+	}
+	public Boolean scannerIngreso(Tarjeta tarjeta,Integer codigoClase) {
+		if(tarjeta!=null && buscarClase(codigoClase)!=null ) {
+			if(tarjeta.getBloqueo().equals(false) && analizarVencimiento(tarjeta)) {
+			 if(tarjeta.buscarClase(codigoClase)){
+				 return true;
+			 }
+			 else {
+				 bloquearIngreso(tarjeta);
+			 }
+			 
+			}
+			
+	}
+		
+		return false;
+	}		
+	
+	public void setClases(HashSet<Clase> clases) {
+		this.clases = clases;
+	}
+
+	public HashSet<Cliente> getAlumnos() {
+		return alumnos;
+	}
+
+	public void setAlumnos(HashSet<Cliente> alumnos) {
+		this.alumnos = alumnos;
+	}
+
+	public HashSet<Empleado> getEmpleados() {
+		return empleados;
+	}
+
+	public void setEmpleados(HashSet<Empleado> empleados) {
+		this.empleados = empleados;
+	}
+	public void setClasesAPagar(ArrayList<Clase> clasesAPagar) {
+		this.clasesAPagar = clasesAPagar;
+	}
+
+	public Integer getCodigoFactura() {
+		return codigoFactura;
+	}
+
+	public void setCodigoFactura(Integer codigoFactura) {
+		this.codigoFactura = codigoFactura;
+	}
+	public void setSaldo(Double saldo) {
+		this.saldo = saldo;
+	}
+
+	public Calendar getDiaActual() {
+		return diaActual;
+	}
+
+	public void setDiaActual(Calendar diaActual) {
+		this.diaActual = diaActual;
+	}
+	public void setGastosVariosTotales(Double gastosVariosTotales) {
+		this.gastosVariosTotales = gastosVariosTotales;
+	}
+
+	public String getListadoDeGastos() {
+		return listadoDeGastos;
+	}
+
+	public void setListadoDeGastos(String listadoDeGastos) {
+		this.listadoDeGastos = listadoDeGastos;
+	}
+	public Double getGastosVariosTotales() {
+		return gastosVariosTotales;
+	}
+
 
 }
