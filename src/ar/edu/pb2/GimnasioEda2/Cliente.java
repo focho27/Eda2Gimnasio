@@ -47,10 +47,8 @@ public class Cliente {
 	}
 
 	public Boolean recibirTarjetaDelGimnasio(Tarjeta tarjeta) {
-		// pauta que tarjeta lleva dni del cliente
 		if (tarjeta != null && tarjeta.getDni().equals(this.dni)) {
 			this.tarjeta = tarjeta;
-			// Terminar metodo si falta algo
 			return true;
 		}
 		return false;

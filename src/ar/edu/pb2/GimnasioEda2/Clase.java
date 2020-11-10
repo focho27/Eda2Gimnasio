@@ -13,5 +13,5 @@ public abstract class Clase {
 	public abstract Boolean agregarAlumnoAClase(Cliente alumno);
 
 	public abstract Boolean agregarProfesorAClase(Empleado profesor);
-//hacer distintas clases
+
 }

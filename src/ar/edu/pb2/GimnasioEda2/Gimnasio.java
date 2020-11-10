@@ -5,9 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 
-
-
-
 public class Gimnasio {
 
 	private String nombre;
@@ -256,7 +253,6 @@ public class Gimnasio {
 	}
 
 	public Boolean renovarMesDeCero(Tarjeta tarjeta, Integer codigoRecepcionista, Integer dni, Double dinero) {
-		// primero agregar clases en clases a pagar
 		Calendar calendarioVencimientoNuevo = Calendar.getInstance();
 		if (tarjeta != null) {
 			calendarioVencimientoNuevo.add(Calendar.DAY_OF_MONTH, 31);
@@ -273,12 +269,10 @@ public class Gimnasio {
 	}
 
 	public ArrayList<Clase> getClasesAPagar() {
-		// TODO Auto-generated method stub
 		return clasesAPagar;
 	}
 
 	public HashSet<Clase> getClases() {
-		// TODO Auto-generated method stub
 		return clases;
 	}
 
@@ -324,7 +318,7 @@ public class Gimnasio {
 			clasesARenovar.addAll(tarjeta.getClasesHabilitadas());
 			enviarFactura(codigoRecepcionista, dni, clasesARenovar);
 			abonarFactura(dni, codigoRecepcionista, dinero);
-			
+
 			tarjeta.setVencimiento(calendarioVencimientoNuevo);
 			return true;
 		}
@@ -343,30 +337,30 @@ public class Gimnasio {
 	public Double getSaldo() {
 		return saldo;
 	}
-	
+
 	public Boolean recibirActaMedica(Integer dni, Integer codigoRecepcionista) {
-		if(buscarCliente(dni)!=null && buscarEmpleado(codigoRecepcionista)!=null) {
-		return ((Recepcionista)buscarEmpleado(codigoRecepcionista)).recibirActaMedica(dni);
+		if (buscarCliente(dni) != null && buscarEmpleado(codigoRecepcionista) != null) {
+			return ((Recepcionista) buscarEmpleado(codigoRecepcionista)).recibirActaMedica(dni);
 		}
 		return false;
 	}
-	public Boolean scannerIngreso(Tarjeta tarjeta,Integer codigoClase) {
-		if(tarjeta!=null && buscarClase(codigoClase)!=null ) {
-			if(tarjeta.getBloqueo().equals(false) && analizarVencimiento(tarjeta)) {
-			 if(tarjeta.buscarClase(codigoClase)){
-				 return true;
-			 }
-			 else {
-				 bloquearIngreso(tarjeta);
-			 }
-			 
+
+	public Boolean scannerIngreso(Tarjeta tarjeta, Integer codigoClase) {
+		if (tarjeta != null && buscarClase(codigoClase) != null) {
+			if (tarjeta.getBloqueo().equals(false) && analizarVencimiento(tarjeta)) {
+				if (tarjeta.buscarClase(codigoClase)) {
+					return true;
+				} else {
+					bloquearIngreso(tarjeta);
+				}
+
 			}
-			
-	}
-		
+
+		}
+
 		return false;
-	}		
-	
+	}
+
 	public void setClases(HashSet<Clase> clases) {
 		this.clases = clases;
 	}
@@ -386,6 +380,7 @@ public class Gimnasio {
 	public void setEmpleados(HashSet<Empleado> empleados) {
 		this.empleados = empleados;
 	}
+
 	public void setClasesAPagar(ArrayList<Clase> clasesAPagar) {
 		this.clasesAPagar = clasesAPagar;
 	}
@@ -397,6 +392,7 @@ public class Gimnasio {
 	public void setCodigoFactura(Integer codigoFactura) {
 		this.codigoFactura = codigoFactura;
 	}
+
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
@@ -408,6 +404,7 @@ public class Gimnasio {
 	public void setDiaActual(Calendar diaActual) {
 		this.diaActual = diaActual;
 	}
+
 	public void setGastosVariosTotales(Double gastosVariosTotales) {
 		this.gastosVariosTotales = gastosVariosTotales;
 	}
@@ -419,9 +416,9 @@ public class Gimnasio {
 	public void setListadoDeGastos(String listadoDeGastos) {
 		this.listadoDeGastos = listadoDeGastos;
 	}
+
 	public Double getGastosVariosTotales() {
 		return gastosVariosTotales;
 	}
-
 
 }

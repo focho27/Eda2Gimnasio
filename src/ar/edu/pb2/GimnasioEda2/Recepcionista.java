@@ -36,7 +36,6 @@ public class Recepcionista extends Empleado {
 		this.sueldo = sueldo;
 	}
 
-	// buscar la factura del cliente en base al dni
 	public Factura buscarFacturaConCliente(Integer dni) {
 		for (Factura factura : facturas) {
 			if (factura.getCliente().getDni().equals(dni)) {
@@ -46,8 +45,6 @@ public class Recepcionista extends Empleado {
 		return null;
 	}
 
-	// con la tarjeta en base a si ya pago las clases que se desbloquee la tarjeta
-	// para hacer las clases
 	public Boolean desbloquearTarjeta(Tarjeta tarjeta) {
 		tarjeta.setBloqueo(false);
 		return true;
