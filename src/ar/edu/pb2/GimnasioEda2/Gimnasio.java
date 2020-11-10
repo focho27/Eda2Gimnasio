@@ -1,26 +1,12 @@
 package ar.edu.pb2.GimnasioEda2;
-<<<<<<< HEAD
 
-=======
->>>>>>> de02c3eef3bab51880fdd39d5bce1de059d494e5
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-
-
-
-
-public class Gimnasio {
-=======
->>>>>>> 4d5d11ebe71e5f0c9cf98c3d737ef8fceeb0e148
 public class Gimnasio {
 
->>>>>>> de02c3eef3bab51880fdd39d5bce1de059d494e5
 	private String nombre;
 	private String direccion;
 	private HashSet<Clase> clases;
@@ -54,12 +40,8 @@ public class Gimnasio {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-<<<<<<< HEAD
-		
-=======
-	
+
 	public Boolean agregarClase(Clase clase) {
-		
 		if(analizarSiExisteTipoDeObjetoEnColeccion(clase)) {
 			return false;
 		}else if(buscarClase(analizarCodigoClase(clase))==null) {
@@ -67,25 +49,18 @@ public class Gimnasio {
 		}else {
 			return false;
 		}
-		
 	}
 	
 	public Integer analizarCodigoClase(Clase clase){
 			if(clase instanceof ClaseDeBoxeo) {
 				return ((ClaseDeBoxeo) clase).getCodigo();
 			}
-			else if(clase instanceof ClaseDeMusculacion) {
-				
-				
+			else if(clase instanceof ClaseDeMusculacion) {		
 				return ((ClaseDeMusculacion) clase).getCodigo();
-					
-				
 			}
 			else if(clase instanceof ClaseDeNatacion) {
 				return ((ClaseDeNatacion) clase).getCodigo();
-				
 				}
-			
 			else if(clase instanceof ClaseDeSpinning) {
 				return ((ClaseDeSpinning) clase).getCodigo();
 			}
@@ -95,33 +70,26 @@ public class Gimnasio {
 			else if(clase instanceof ClaseDeAerobico) {
 				return ((ClaseDeAerobico) clase).getCodigo();
 			}
-		
 			return 0;
-	}
+			}
 	
 	public Boolean analizarSiExisteTipoDeObjetoEnColeccion(Clase claseAAnalizar){
 		for (Clase clase : clases) {
-			
-		
 			if(clase instanceof ClaseDeBoxeo) {
 				if(claseAAnalizar instanceof ClaseDeBoxeo) {
 				return true;
 				}
 			}
 			else if(clase instanceof ClaseDeMusculacion) {
-				
 				if(claseAAnalizar instanceof ClaseDeMusculacion) {
 					return true;
 					}
-				
 			}
 			else if(clase instanceof ClaseDeNatacion) {
-				
 				if(claseAAnalizar instanceof ClaseDeNatacion) {
 					return true;
 					}
 				}
-			
 			else if(clase instanceof ClaseDeSpinning) {
 				if(claseAAnalizar instanceof ClaseDeSpinning) {
 					return true;
@@ -141,17 +109,13 @@ public class Gimnasio {
 			return false;
 	}
 	
-
 	public Clase buscarClase(Integer codigo) {
-		
 		for (Clase clase : clases) {
 			if(clase!=null) {
 			if(clase instanceof ClaseDeBoxeo) {
-				
 				if(((ClaseDeBoxeo)clase).getCodigo().equals(codigo)) {
 					return clase;
 				}
-				
 			}
 			else if(clase instanceof ClaseDeMusculacion) {
 				if(((ClaseDeMusculacion)clase).getCodigo().equals(codigo)) {
@@ -178,16 +142,10 @@ public class Gimnasio {
 					return ((ClaseDeAerobico)clase);
 				}
 			}
-		
 			}
 		}
-			
-		
 		return null;
 	}
-<<<<<<< HEAD
-=======
-	
 	
 	public Boolean agregarCliente(Cliente alumno) {
 		return alumnos.add(alumno);
@@ -225,43 +183,101 @@ public class Gimnasio {
 		return null;
 	}
 	
-	public Boolean agregarCliente(Cliente alumno) {
-		return alumnos.add(alumno);
-}
-
-public Cliente buscarCliente(Integer dni) {
-		for (Cliente cliente : alumnos) {
-			if(cliente.getDni().equals(dni)) {
-				return cliente;
-			}
-		}
-		return null;
-}
-
-
-public Boolean agregarEmpleado(Empleado empleado) {
-	return empleados.add(empleado);
-}
-
-public Empleado buscarEmpleado(Integer codigoEmpleado) {
-	for (Empleado empleado : empleados) {
-		if(empleado instanceof Instructor) {
-			
-			if(((Instructor)empleado).getCodigo().equals(codigoEmpleado)) {
-				
-				return ((Instructor)empleado);
-			}
-		}
-		if(empleado instanceof Recepcionista) {
-			if(((Recepcionista)empleado).getCodigo().equals(codigoEmpleado)) {
-				return ((Recepcionista)empleado);
-			}
-		}
-		
+	public void agregarSaldo(Double dinero) {
+		saldo += dinero;
 	}
-	return null;
-}
+	
+	public Date diaActual() {
+	return	diaActual.getTime();
+	}
+	public void aumentarDias(Integer dias) {
+		diaActual.add(Calendar.DAY_OF_MONTH, dias);
+	}
+	public void aumentarHoras(Integer horas) {
+		diaActual.add(Calendar.HOUR, horas);
+	}
+	public void colorcarDiaEnAnio(Integer year , Integer month, Integer date, Integer hourOfDay,Integer minute) {
+	
+		diaActual.set(year, month, date, hourOfDay, minute);
+	}
+	
+	
+	public Boolean analizarVencimiento(Tarjeta tarjeta) {
+		if(tarjeta!=null) {
+			
+			if(tarjeta.getCalendario().before(tarjeta.getVencimiento())) {
+				return true;
+			}else {
+				bloquearIngreso(tarjeta);
+				return false;
+			}
+			
+		}
+		return false;
+	}
+	
+	public Double calcularSueldos(){
+		Double sueldos=0.0;
+		for (Empleado empleado : empleados) {
+			if(empleado instanceof Instructor) {
+				sueldos+=((Instructor)empleado).getSueldo();
+			}
+			if(empleado instanceof Recepcionista) {
+				sueldos+=((Recepcionista)empleado).getSueldo();
+				}
+			}
+		return sueldos;
+	}
+	
+	public Boolean emitirTarjetaCliente(Tarjeta tarjeta,Integer codigo) {
+		if(buscarCliente(codigo)!=null && tarjeta!=null) {					
+			buscarCliente(codigo).recibirTarjetaDelGimnasio(tarjeta);
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
+	
+	public void bloquearIngreso(Tarjeta tarjeta ) {
+		//analizamos fechas de vencimiento y si ya no esta anotado a la clase
+		tarjeta.setBloqueo(true);
+	}
+	
+	public Boolean desbloquearTarjeta(Integer codigoRecepcionista,Integer dni) {
+		if(buscarEmpleado(codigoRecepcionista)!=null && buscarCliente(dni)!=null) {
+			return ((Recepcionista)buscarEmpleado(codigoRecepcionista)).desbloquearTarjeta(buscarCliente(dni).getTarjeta());
+		}
+		return false;
+	}
+	
+	public Boolean agregarClasesAPagar(Integer codigoClase) {
+				if(buscarClase(codigoClase)!=null) {
+				return	clasesAPagar.add(buscarClase(codigoClase));
+				
+				}
+				return false;
+	}
 
->>>>>>> de02c3eef3bab51880fdd39d5bce1de059d494e5
->>>>>>> 4d5d11ebe71e5f0c9cf98c3d737ef8fceeb0e148
+		// tam aca cree estos 2 metodos en base a las firmas que te tocaron a vos para crear, cualquier cosa avisame
+
+	public Boolean renovarMesDeCero(Tarjeta tarjeta,Integer codigoRecepcionista,Integer dni,Double dinero) {
+		//primero agregar clases en clases a pagar
+		Calendar calendarioVencimientoNuevo=Calendar.getInstance();
+		if(tarjeta!=null) {
+		 calendarioVencimientoNuevo.add(Calendar.DAY_OF_MONTH, 31);
+		enviarFactura(codigoRecepcionista,dni,clasesAPagar);
+		abonarFactura(dni,codigoRecepcionista,dinero);
+		tarjeta.setVencimiento(calendarioVencimientoNuevo);
+		return true;
+		}
+		return false;
+	}
+
+
+	public Double gananciaActual() {
+		return	this.saldo = this.saldo - (this.gastosVariosTotales + calcularSueldos());
+	}
+
 }
