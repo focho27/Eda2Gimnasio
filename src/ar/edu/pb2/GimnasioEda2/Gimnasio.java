@@ -1,24 +1,12 @@
 package ar.edu.pb2.GimnasioEda2;
-<<<<<<< HEAD
-
-=======
->>>>>>> de02c3eef3bab51880fdd39d5bce1de059d494e5
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 
-<<<<<<< HEAD
-
-
-
-
 
 public class Gimnasio {
-=======
-public class Gimnasio {
 
->>>>>>> de02c3eef3bab51880fdd39d5bce1de059d494e5
 	private String nombre;
 	private String direccion;
 	private HashSet<Clase> clases;
@@ -180,8 +168,7 @@ public class Gimnasio {
 		
 		return null;
 	}
-<<<<<<< HEAD
-=======
+
 	
 	
 	public Boolean agregarCliente(Cliente alumno) {
@@ -265,12 +252,6 @@ public class Gimnasio {
 			}
 		return sueldos;
 	}
-<<<<<<< HEAD
-	return null;
+
 }
 
->>>>>>> de02c3eef3bab51880fdd39d5bce1de059d494e5
-=======
-		
->>>>>>> 8b739b46c383d562f86b592588f1877dfd2de204
-}
