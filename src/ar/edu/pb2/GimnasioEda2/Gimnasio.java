@@ -1,17 +1,9 @@
 package ar.edu.pb2.GimnasioEda2;
-<<<<<<< HEAD
-=======
-
->>>>>>> 26ecb7e04363530d331ecb2344539f737687bebc
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 26ecb7e04363530d331ecb2344539f737687bebc
 public class Gimnasio {
 
 	private String nombre;
@@ -153,11 +145,6 @@ public class Gimnasio {
 		}
 		return null;
 	}
-<<<<<<< HEAD
-
-	
-=======
->>>>>>> 26ecb7e04363530d331ecb2344539f737687bebc
 	
 	public Boolean agregarCliente(Cliente alumno) {
 		return alumnos.add(alumno);
@@ -240,8 +227,7 @@ public class Gimnasio {
 			}
 		return sueldos;
 	}
-<<<<<<< HEAD
-=======
+
 	
 	public Boolean emitirTarjetaCliente(Tarjeta tarjeta,Integer codigo) {
 		if(buscarCliente(codigo)!=null && tarjeta!=null) {					
@@ -293,7 +279,6 @@ public class Gimnasio {
 	public Double gananciaActual() {
 		return	this.saldo = this.saldo - (this.gastosVariosTotales + calcularSueldos());
 	}
->>>>>>> 26ecb7e04363530d331ecb2344539f737687bebc
 
 }
 
